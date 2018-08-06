@@ -10,7 +10,7 @@
 | contains the "web" middleware group. Now create something great!
 |
 */
-
+/*
 Route::get('new-page', function () {
 	$names = ["rhixcell","rose","gabule"];
     return view('new-page', array('names'=>$names));
@@ -58,3 +58,19 @@ Route::get('shoutout/{text}', function ($text){
 Route::get('/middleware/{age}',function($age){
 	return view ('age', array('age'=>$age));
 })->middleware('age');
+Route::get('/pages/contact','PagesController@contactpage');
+Route::get('pages/middleware/{age}','PagesController@middlewareAgePage');
+*/
+Route::get('/crushes', 'CrushesController@index');
+
+Route::get('/crushes/create','CrushesController@create')->name('crushes.create');
+
+Route::post('/crushes/store','CrushesController@store')->name('crushes.store');
+
+Route::get('/crushes', 'CrushesController@index')->name('crushes.index');
+
+Route::get('/crushes/{id}/edit', 'CrushesController@edit' )->name( 'crushes.id.edit');
+
+Route::post( '/crushes/{id}/update', 'CrushesController@update')->name('crushes.id.update');
+
+Route::get( '/crushes/{id}/destroy','CrushesController@destroy')->name( 'crushes.id.destroy');
